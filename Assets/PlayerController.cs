@@ -83,12 +83,12 @@ public class PlayerController : MonoBehaviour {
         }
 
         Move(forwardMotion, sideMotion);
-        ApplyGravity();
+     //   ApplyGravity();
     }
 
     private void ApplyGravity()
     {
-        _rigidbody.MovePosition(_rigidbody.position + Vector3.down * 0.8f * Time.deltaTime);
+    //    _rigidbody.MovePosition(_rigidbody.position + Vector3.down * 0.8f * Time.deltaTime);
     }
 
     private void Move(float forwardMotion, float sideMotion)
@@ -99,17 +99,15 @@ public class PlayerController : MonoBehaviour {
             var sideMovement = transform.right * sideMotion;
             var effectiveForce = (forwardMovement + sideMovement);
 
-            _rigidbody.MovePosition(_rigidbody.position + effectiveForce * Time.deltaTime);
+            //_rigidbody.MovePosition(_rigidbody.position + effectiveForce * Time.deltaTime);
+            _rigidbody.AddForce(effectiveForce, movementMode);
         }
 
-        //_rigidbody.AddForce(effectiveForce, movementMode);
     }
 
     private void Turn(float amount)
     {
-
-
-        //_rigidbody.AddTorque(Vector3.up * amount, rotationMode);
+        _rigidbody.AddTorque(Vector3.up * amount, rotationMode);
     }
 
     private void Jump()
